@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luxury Portrait Studio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Noto Sans Thai',sans-serif;
+    background:#f5ede0;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    padding:20px 8%;
+    position:fixed;
+    top:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(10,10,10,0.92);
+    backdrop-filter:blur(10px);
+    z-index:999;
+}
+
+.logo{
+    font-family:'Cinzel',serif;
+    color:#d4af37;
+    font-size:30px;
+    font-weight:700;
+}
+
+nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:140px 8% 80px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
+    url("bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    color:white;
+    gap:50px;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(212,175,55,0.15);
+    border:1px solid rgba(212,175,55,0.3);
+    color:#d4af37;
+    margin-bottom:25px;
+}
+
+.hero-text h1{
+    font-family:'Cinzel',serif;
+    font-size:75px;
+    line-height:1.1;
+    color:#d4af37;
+    margin-bottom:25px;
+}
+
+.hero-text p{
+    color:#ddd;
+    line-height:1.9;
+    margin-bottom:35px;
+    font-size:18px;
+}
+
+.btn{
+    display:inline-block;
+    padding:17px 40px;
+    background:#d4af37;
+    color:#111;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    background:#ebca5d;
+}
+
+.hero-image{
+    flex:1;
+    text-align:center;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:520px;
+    border-radius:25px;
+    border:4px solid #d4af37;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* SECTION */
+
+section{
+    padding:100px 8%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.title h2{
+    font-family:'Cinzel',serif;
+    font-size:50px;
+    color:#8d6821;
+    margin-bottom:15px;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:330px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card-content h3{
+    color:#8d6821;
+    margin-bottom:10px;
+}
+
+/* PRICE */
+
+.pricing{
+    background:#111;
+    color:white;
+    border-radius:35px;
+}
+
+.pricing-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.option-box{
+    background:#1f1f1f;
+    padding:25px;
+    border-radius:18px;
+    margin-bottom:20px;
+}
+
+.option-box label{
+    display:block;
+    margin-bottom:10px;
+    color:#d4af37;
+    font-weight:700;
+}
+
+.option-box select,
+.option-box input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#f5ede0;
+    font-size:16px;
+}
+
+.summary{
+    background:linear-gradient(135deg,#d4af37,#9c7716);
+    padding:45px;
+    border-radius:25px;
+    color:#111;
+}
+
+.summary h3{
+    font-size:38px;
+    margin-bottom:25px;
+    font-family:'Cinzel',serif;
+}
+
+.summary p{
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.total{
+    margin-top:30px;
+    font-size:55px;
+    font-weight:700;
+}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.feature{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+.feature h3{
+    margin:18px 0;
+    color:#8d6821;
+}
+
+/* CONTACT */
+
+.contact{
+    background:
+    linear-gradient(135deg,#1a1a1a,#2c2114);
+
+    border-radius:35px;
+    color:white;
+}
+
+.contact-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+form input,
+form textarea{
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#f5ede0;
+}
+
+.submit-btn{
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#d4af37;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:35px;
+    background:#111;
+    color:#999;
+    margin-top:80px;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text h1{
+        font-size:48px;
+    }
+
+    .pricing-container,
+    .contact-box{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Luxury Studio
+    </div>
+
+    <ul>
+        <li><a href="">หน้าแรก</a></li>
+        <li><a href="">ผลงาน</a></li>
+        <li><a href="">ราคา</a></li>
+        <li><a href="">ติดต่อ</a></li>
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <div class="badge">
+            Premium Portrait Service
+        </div>
+
+        <h1>
+            เปลี่ยนภาพธรรมดา
+            ให้กลายเป็น
+            งานศิลป์สุดหรู
+        </h1>
+
+        <p>
+            รับวาดภาพครอบครัว ภาพคู่ และภาพบุคคล
+            พร้อมกรอบพรีเมียมและงานรีทัชคุณภาพสูง
+        </p>
+
+        <a href="#price" class="btn">
+            เริ่มสั่งทำ
+        </a>
+
+    </div>
+
+    <div class="hero-image">
+        <img src="family.jpg">
+    </div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section>
+
+    <div class="title">
+        <h2>ตัวอย่างผลงาน</h2>
+    </div>
+
+    <div class="gallery">
+
+        <div class="card">
+            <img src="1.jpg">
+
+            <div class="card-content">
+                <h3>กรอบหลุยส์</h3>
+                <p>โทนราชวงศ์สุดหรู</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="2.jpg">
+
+            <div class="card-content">
+                <h3>กรอบลอย</h3>
+                <p>โมเดิร์น เรียบหรู</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="3.jpg">
+
+            <div class="card-content">
+                <h3>รูปพิมพ์</h3>
+                <p>คุณภาพคมชัดระดับพรีเมียม</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PRICE -->
+
+<section class="pricing" id="price">
+
+    <div class="title">
+        <h2 style="color:#d4af37">
+            คำนวณราคา
+        </h2>
+    </div>
+
+    <div class="pricing-container">
+
+        <div>
+
+            <div class="option-box">
+
+                <label>ขนาดรูป</label>
+
+                <select id="size">
+
+                    <option value="A4">
+                        A4
+                    </option>
+
+                    <option value="10x12">
+                        10x12
+                    </option>
+
+                    <option value="10x15">
+                        10x15
+                    </option>
+
+                    <option value="12x15">
+                        12x15
+                    </option>
+
+                    <option value="12x18">
+                        12x18
+                    </option>
+
+                    <option value="16x20">
+                        16x20
+                    </option>
+
+                    <option value="20x24">
+                        20x24
+                    </option>
+
+                    <option value="20x30">
+                        20x30
+                    </option>
+
+                    <option value="24x36">
+                        24x36
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="option-box">
+
+                <label>ประเภทงาน</label>
+
+                <select id="type">
+
+                    <option value="file">
+                        เฉพาะไฟล์
+                    </option>
+
+                    <option value="print">
+                        พร้อมพิมพ์รูป
+                    </option>
+
+                    <option value="frame">
+                        พร้อมกรอบ
+                    </option>
+
+                    <option value="float">
+                        กรอบลอย
+                    </option>
+
+                    <option value="luxury">
+                        กรอบหลุยส์
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="option-box">
+
+                <label>จำนวนคน</label>
+
+                <input
+                type="number"
+                id="people"
+                value="1"
+                min="1">
+
+            </div>
+
+        </div>
+
+        <div class="summary">
+
+            <h3>สรุปราคา</h3>
+
+            <p>
+                ราคารวมทั้งหมด
+            </p>
+
+            <div class="total">
+                <span id="total">
+                    300
+                </span>
+                บาท
+            </div>
+
+            <br>
+
+            <p>
+                เพิ่มคนในรูป +300 / คน
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section>
+
+    <div class="title">
+        <h2>ทำไมลูกค้าถึงเลือกเรา</h2>
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <h3>รีทัชมือทุกภาพ</h3>
+            <p>งานละเอียดระดับมืออาชีพ</p>
+        </div>
+
+        <div class="feature">
+            <h3>คุณภาพสูง</h3>
+            <p>ไฟล์คมชัดพร้อมปริ้นท์จริง</p>
+        </div>
+
+        <div class="feature">
+            <h3>จัดส่งทั่วประเทศ</h3>
+            <p>แพ็กอย่างดี ปลอดภัย</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+    <div class="title">
+
+        <h2 style="color:#d4af37">
+            ส่งรีเควสงาน
+        </h2>
+
+    </div>
+
+    <div class="contact-box">
+
+        <form>
+
+            <input type="text"
+            placeholder="ชื่อ">
+
+            <input type="tel"
+            placeholder="เบอร์โทร">
+
+            <input type="file">
+
+            <textarea rows="6"
+            placeholder="รายละเอียดเพิ่มเติม"></textarea>
+
+            <button class="submit-btn">
+                ส่งรีเควส
+            </button>
+
+        </form>
+
+        <div class="summary">
+
+            <h3>สถานะคิวงาน</h3>
+
+            <p>คิวปัจจุบัน 12 งาน</p>
+
+            <br>
+
+            <p>
+                ระยะเวลารอประมาณ
+                3-5 วัน
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Luxury Portrait Studio
+</footer>
+
+<script>
+
+const prices = {
+
+  "A4": {
+    file: 300,
+    print: 450,
+    frame: 550,
+    float: 550,
+    luxury: 0
+  },
+
+  "10x12": {
+    file: 400,
+    print: 490,
+    frame: 590,
+    float: 590,
+    luxury: 0
+  },
+
+  "10x15": {
+    file: 400,
+    print: 550,
+    frame: 690,
+    float: 690,
+    luxury: 0
+  },
+
+  "12x15": {
+    file: 500,
+    print: 590,
+    frame: 790,
+    float: 790,
+    luxury: 0
+  },
+
+  "12x18": {
+    file: 500,
+    print: 690,
+    frame: 990,
+    float: 990,
+    luxury: 1390
+  },
+
+  "16x20": {
+    file: 700,
+    print: 890,
+    frame: 1290,
+    float: 1290,
+    luxury: 1690
+  },
+
+  "20x24": {
+    file: 800,
+    print: 990,
+    frame: 1590,
+    float: 1590,
+    luxury: 1990
+  },
+
+  "20x30": {
+    file: 1000,
+    print: 1200,
+    frame: 1990,
+    float: 1990,
+    luxury: 2490
+  },
+
+  "24x36": {
+    file: 1000,
+    print: 1400,
+    frame: 2290,
+    float: 2290,
+    luxury: 2990
+  }
+
+};
+
+const size =
+document.getElementById("size");
+
+const type =
+document.getElementById("type");
+
+const people =
+document.getElementById("people");
+
+const total =
+document.getElementById("total");
+
+function calculate(){
+
+  let sizeValue = size.value;
+
+  let typeValue = type.value;
+
+  let peopleCount =
+  Number(people.value);
+
+  let basePrice =
+  prices[sizeValue][typeValue];
+
+  let extraPeople = 0;
+
+  if(peopleCount > 1){
+
+    extraPeople =
+    (peopleCount - 1) * 300;
+
+  }
+
+  let finalPrice =
+  basePrice + extraPeople;
+
+  total.innerText =
+  finalPrice.toLocaleString();
+
+}
+
+size.addEventListener(
+"change",
+calculate
+);
+
+type.addEventListener(
+"change",
+calculate
+);
+
+people.addEventListener(
+"input",
+calculate
+);
+
+</script>
+
+</body>
+</html>
